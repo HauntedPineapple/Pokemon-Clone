@@ -59,8 +59,10 @@ namespace PokeTheMon
 
         public void toString()
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(name);
+            Console.WriteLine("HP: "+hp);
+            moves.toString();
             Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }

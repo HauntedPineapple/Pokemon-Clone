@@ -41,6 +41,7 @@ namespace PokeTheMon
             {
                 Console.Write(entry+" ");
             }
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
