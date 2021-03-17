@@ -34,6 +34,7 @@ namespace PokeTheDex
 
         public new void ToString()
         {
+            //Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(name);
             if (description.Length > 1)
             {
@@ -53,6 +54,7 @@ namespace PokeTheDex
                 Console.Write("Category: Non-Damaging\n");
             }
             Console.WriteLine("PP: " + powerPoints + "\tPower: " + basePower + "\tAccuracy: " + accuracy);
+            //Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
 }
