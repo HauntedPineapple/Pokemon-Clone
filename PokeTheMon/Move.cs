@@ -32,9 +32,9 @@ namespace PokeTheMon
         public int Accuracy { get { return accuracy; } }
         public int PP { get { return powerPoints; } set { powerPoints = value; } }
 
-        public void toString()
+        public new void ToString()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(name);
             if (description.Length > 1)
             {
@@ -54,7 +54,7 @@ namespace PokeTheMon
                 Console.Write("Category: Non-Damaging\n");
             }
             Console.WriteLine("PP: "+powerPoints+"\tPower: "+basePower+"\tAccuracy: "+accuracy);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            //Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
 }
