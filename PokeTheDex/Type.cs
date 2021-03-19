@@ -24,7 +24,6 @@ namespace PokeTheDex
 
         public void Print()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(name);
             Console.Write("Weak To: ");
             foreach (string entry in weakTo)

@@ -57,13 +57,13 @@ namespace PokeTheMon
         public int Speed { get { return speed;} set { speed = value; } }
         #endregion
 
-        public void toString()
+        public new void ToString()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            //Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(name);
             Console.WriteLine("HP: "+hp);
-            moves.toString();
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            moves.ToString();
+            //Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
 }

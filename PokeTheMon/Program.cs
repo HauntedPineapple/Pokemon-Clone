@@ -12,9 +12,13 @@ namespace PokeTheMon
             createMoves();
             makePokemon();
 
-            Brick_Break.toString();
-            Grass.toString();
-            Mimikyu.toString();
+            Brick_Break.ToString();
+            Console.WriteLine();
+            Grass.ToString();
+            Console.WriteLine();
+            Mimikyu.ToString();
+            Console.WriteLine();
+            Blaziken.ToString();
 
             Console.ReadLine();
         }

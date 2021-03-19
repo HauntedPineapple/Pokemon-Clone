@@ -20,12 +20,12 @@ namespace PokeTheMon
         public Move Move3 { get { return move3; } }
         public Move Move4 { get { return move4; } }
 
-        public void toString()
+        public new void ToString()
         {
-            move1.toString();
-            move2.toString();
-            move3.toString();
-            move4.toString();
+            Console.Write(move1.Name);
+            Console.Write("\t" + move2.Name);
+            Console.Write("\n" + move3.Name);
+            Console.Write("\t"+move4.Name+"\n");
         }
     }
 }

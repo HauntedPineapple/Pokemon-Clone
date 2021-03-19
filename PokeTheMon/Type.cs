@@ -22,9 +22,9 @@ namespace PokeTheMon
         public List<String> ResistantTo { get { return resistantTo; } }
         public List<String> EffectiveAgainst { get {return effectiveAgainst; } }
 
-        public void toString()
+        public new void ToString()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            //Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(name);
             Console.Write("Weak To: ");
             foreach(string entry in weakTo)
@@ -42,7 +42,7 @@ namespace PokeTheMon
                 Console.Write(entry+" ");
             }
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            //Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
 }
