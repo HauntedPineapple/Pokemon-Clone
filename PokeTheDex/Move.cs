@@ -30,7 +30,7 @@ namespace PokeTheDex
         public int Accuracy { get { return accuracy; } }
         public int PP { get { return powerPoints; } set { powerPoints = value; } }
 
-        public void toString()
+        public void Print()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(name);
@@ -48,7 +48,7 @@ namespace PokeTheDex
                 Console.Write("Category: Special\n");
             }
             Console.WriteLine("PP: " + powerPoints + "\tPower: " + basePower + "\tAccuracy: " + accuracy);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }

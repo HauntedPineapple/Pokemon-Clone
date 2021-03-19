@@ -22,7 +22,7 @@ namespace PokeTheDex
         public List<String> ResistantTo { get { return resistantTo; } }
         public List<String> EffectiveAgainst { get { return effectiveAgainst; } }
 
-        public void toString()
+        public void Print()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(name);
@@ -41,7 +41,8 @@ namespace PokeTheDex
             {
                 Console.Write(entry + " ");
             }
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
