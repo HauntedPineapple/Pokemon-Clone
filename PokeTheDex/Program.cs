@@ -4,6 +4,17 @@ using System.Text;
 
 namespace PokeTheDex
 {
+    public enum Region
+    {
+        Kanto,
+        Johto,
+        Hoenn,
+        Sinnoh,
+        Unova,
+        Kalos,
+        Alola,
+        Galar
+    }
     class Program
     {
         static void Main(string[] args)
@@ -133,7 +144,7 @@ namespace PokeTheDex
         static Pokemon Abomasnow, Absol, Aegislash, Aerodactyl, Aggron, Alakazam, Ampharos, Arcanine;
         static Pokemon Banette, Barbaracle, Beedrill, Blaziken, Bronzong;
         static Pokemon Camerupt, Carracosta, Celesteela, Chandelure, Cloyster, Cofragrigus, Cresselia;
-        static Pokemon Delphox, Dhelmise, Dialga, Dragalge, Drapion, Durant, Dusknoir;
+        static Pokemon Delphox, Dhelmise, Dialga, Ditto, Dragalge, Drapion, Durant, Dusknoir;
         static Pokemon Electross, Empoleon, Escavalier, Espeon;
         static Pokemon Flareon, Froslass;
         static Pokemon Gallade, Garchomp, Gardevoir, Gengar, Glaceon, Glalie, Golisopod, Golurk, Gyarados;

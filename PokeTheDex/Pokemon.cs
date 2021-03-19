@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace PokeTheDex
 {
     class Pokemon
     {
         int hp, attack, specialAttack, defense, specialDefense, speed;
+        int id;
+        Region region;
+        float height, weight;
         Type firstType, secondType;
         String name, description;
         List<Move> possibleMoves;
         
 
-        public Pokemon(string name)
+        public Pokemon()
         {
-            this.name = name;
+            name = "Unknown";
+            int id = -1;
+
         }
         // Monotype pokemon
-        public Pokemon(string name, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type,string description="")
+        public Pokemon(string name, int id, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type,string description="",Region region = Region.Kanto)
         {
             this.name = name;
             this.hp = hp;
@@ -30,7 +37,7 @@ namespace PokeTheDex
             secondType = type;
             this.description = description;
         }
-        public Pokemon(string name, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type, List<Move> possibleMoves, string description = "")
+        public Pokemon(string name, int id, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type, List<Move> possibleMoves, string description = "", Region region = Region.Kanto)
         {
             this.name = name;
             this.hp = hp;
@@ -46,9 +53,10 @@ namespace PokeTheDex
         }
 
         // Two-type pokemon
-        public Pokemon(string name, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type1, Type type2, string description = "")
+        public Pokemon(string name, int id,int hp, int atk, int spAtk, int def, int spDef, int speed, Type type1, Type type2, string description = "", Region region = Region.Kanto)
         {
             this.name = name;
+            this.id = id;
             this.hp = hp;
             attack = atk;
             specialAttack = spAtk;
@@ -58,8 +66,9 @@ namespace PokeTheDex
             firstType = type1;
             secondType = type2;
             this.description = description;
+            this.region = region;
         }
-        public Pokemon(string name, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type1, Type type2, List<Move> possibleMoves, string description = "")
+        public Pokemon(string name,int id, int hp, int atk, int spAtk, int def, int spDef, int speed, Type type1, Type type2, List<Move> possibleMoves, string description = "", Region region = Region.Kanto)
         {
             this.name = name;
             this.hp = hp;
