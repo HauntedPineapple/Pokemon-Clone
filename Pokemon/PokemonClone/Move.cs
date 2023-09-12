@@ -9,18 +9,16 @@ namespace PokemonClone
     internal class Move
     {
         #region Member Variables
-        private string m_name;
-        private string m_description;
-        private Type m_type;
-        private bool m_isPhysical;
+        protected string m_name;
+        protected string m_description;
+        protected Type m_type;
         #endregion
 
         #region Constructors
-        public Move(string a_name, Type a_type, bool a_isPhysical, string a_description = "")
+        public Move(string a_name, Type a_type, string a_description = "")
         {
             m_name = a_name;
             m_type = a_type;
-            m_isPhysical = a_isPhysical;
             m_description = a_description;
         }
         #endregion

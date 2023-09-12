@@ -1,11 +1,15 @@
-## Resources
+## Resources and Other Links
 * [Pokémon Database](https://pokemondb.net/)
+* [The Complete Damage Formula for Black & White by Smogon](https://www.smogon.com/bw/articles/bw_complete_damage_formula)
+* [NAME](LINK)
+* [NAME](LINK)
+<!-- * [NAME](LINK) -->
 <!-- * [NAME](LINK) -->
 
 ## Wiki Page Links
 * [Stats wiki page](https://bulbapedia.bulbagarden.net/wiki/Stat)
 * [IVs wiki page](https://bulbapedia.bulbagarden.net/wiki/Individual_values#Generation_III_onward)
-* [Damage Calculation](https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_V_onward)
+* [Damage](https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_V_onward)
 * [NAME](LINK)
 * [NAME](LINK)
 * [NAME](LINK)
