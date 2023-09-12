@@ -70,23 +70,40 @@
         static void CreateTypes(Dictionary<TypeName, Type> a_types)
         {
             a_types.Add(TypeName.Normal, new Type(TypeName.Normal, new TypeName[] { }, new TypeName[] { TypeName.Rock, TypeName.Steel }, new TypeName[] { TypeName.Ghost }));
-            a_types.Add(TypeName.Fire, new Type(TypeName.Fire, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
+            a_types.Add(TypeName.Fire, new Type(TypeName.Fire, new TypeName[] {TypeName.Grass, TypeName.Ice, TypeName.Bug, TypeName.Steel}, new TypeName[] {TypeName.Fire, TypeName.Water, TypeName.Rock, TypeName.Dragon}, new TypeName[] {}));
+           
             a_types.Add(TypeName.Water, new Type(TypeName.Water, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
             a_types.Add(TypeName.Grass, new Type(TypeName.Grass, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
-            a_types.Add(TypeName.Electric, new Type(TypeName.Electric, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
+            a_types.Add(TypeName.Electric, new Type(TypeName.Electric, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Ground}));
+
             a_types.Add(TypeName.Ice, new Type(TypeName.Ice, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
-            a_types.Add(TypeName.Fighting, new Type(TypeName.Fighting, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
-            a_types.Add(TypeName.Poison, new Type(TypeName.Poison, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
+            a_types.Add(TypeName.Fighting, new Type(TypeName.Fighting, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Ghost}));
+
+            a_types.Add(TypeName.Poison, new Type(TypeName.Poison, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Steel}));
+
             a_types.Add(TypeName.Ground, new Type(TypeName.Ground, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
             a_types.Add(TypeName.Flying, new Type(TypeName.Flying, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
             a_types.Add(TypeName.Psychic, new Type(TypeName.Psychic, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
             a_types.Add(TypeName.Bug, new Type(TypeName.Bug, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
             a_types.Add(TypeName.Rock, new Type(TypeName.Rock, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
-            a_types.Add(TypeName.Ghost, new Type(TypeName.Ghost, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
-            a_types.Add(TypeName.Dragon, new Type(TypeName.Dragon, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
+            a_types.Add(TypeName.Ghost, new Type(TypeName.Ghost, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Normal}));
+
+            a_types.Add(TypeName.Dragon, new Type(TypeName.Dragon, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Fairy}));
+
             a_types.Add(TypeName.Dark, new Type(TypeName.Dark, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
             a_types.Add(TypeName.Steel, new Type(TypeName.Steel, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
-            a_types.Add(TypeName.Fairy, new Type(TypeName.Fairy, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+
+            a_types.Add(TypeName.Fairy, new Type(TypeName.Fairy, new TypeName[] {}, new TypeName[] {TypeName.Fire, TypeName.Ground}, new TypeName[] {}));
         }
         #endregion
 
