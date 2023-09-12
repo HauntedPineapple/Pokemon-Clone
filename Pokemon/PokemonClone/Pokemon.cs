@@ -12,8 +12,7 @@ namespace PokemonClone
 
         #region Member Variables
         private Species m_species;
-        private string m_name;
-        private bool m_isMale;
+        private string m_nickname;
 
         private int m_level;
         //private int exp;
@@ -40,14 +39,14 @@ namespace PokemonClone
         public Pokemon(Species a_species, string a_name, int a_level)
         {
             m_species = a_species;
-            m_name = a_name;
+            m_nickname = a_name;
             m_level = a_level;
         }
 
         public Pokemon(Species a_species, string a_name, Move[] a_moveset)
         {
             m_species = a_species;
-            m_name = a_name;
+            m_nickname = a_name;
 
             if (a_moveset.Length > 4)
             {
@@ -58,7 +57,7 @@ namespace PokemonClone
         #endregion
 
         #region Properties
-        public string Name { get { return m_name; } }
+        public string Name { get { return m_nickname; } }
         public Type PrimaryType { get { return m_species.PrimaryType; } }
         public Type SecondaryType { get { return m_species.SecondaryType; } }
         #endregion
@@ -66,7 +65,16 @@ namespace PokemonClone
         #region Methods
         public override string ToString()
         {
-            return "";
+            string output = "";
+
+            if (m_nickname != "") output += "Name: " + m_nickname + "\nSpecies: " + m_species.Name;
+            else output += "Name: " + m_species.Name;
+            
+            output += "\nLevel"+m_level;
+            output += "\nHP: "+m_currentHP+"/"+m_hp;
+            output += "\n";
+
+            return output;
         }
         #endregion
     }
