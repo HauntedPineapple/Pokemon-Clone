@@ -9,7 +9,11 @@
 * [Stats wiki page](https://bulbapedia.bulbagarden.net/wiki/Stat)
 * [IVs wiki page](https://bulbapedia.bulbagarden.net/wiki/Individual_values#Generation_III_onward)
 * [Damage](https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_V_onward)
+* [Move Priority](https://bulbapedia.bulbagarden.net/wiki/Priority#Mechanics)
+* [Natures](https://bulbapedia.bulbagarden.net/wiki/Nature)
 * [List of moves](https://bulbapedia.bulbagarden.net/wiki/List_of_moves)
+* [Ability](https://bulbapedia.bulbagarden.net/wiki/Ability)
+* [Stats](https://bulbapedia.bulbagarden.net/wiki/Stat)
 <!-- * [NAME](LINK) -->
 <!-- * [NAME](LINK) -->
 <!-- * [NAME](LINK) -->
