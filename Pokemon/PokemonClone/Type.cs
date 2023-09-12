@@ -8,26 +8,35 @@ namespace PokemonClone
 {
     internal class Type
     {
-        #region Member Variables
         private TypeName m_name;
-        #endregion
+        private TypeName[] m_effectiveAgainst;
+        private TypeName[] m_weakAgainst;
+        private TypeName[] m_noEffectOn;
 
-        #region Constructors
-        public Type(TypeName a_name)
+        public Type(TypeName a_name, TypeName[] a_effectiveAgainst, TypeName[] a_weakAgainst, TypeName[] a_noEffectOn)
         {
             m_name = a_name;
+            m_effectiveAgainst = a_effectiveAgainst;
+            m_weakAgainst = a_weakAgainst;
+            m_noEffectOn = a_noEffectOn;
         }
-        #endregion
 
-        #region Properties
         public TypeName Name { get { return m_name; } }
-        #endregion
 
-        #region Methods
         public override string ToString()
         {
-            return "Type: "+Name.ToString();
+            return Name.ToString();
         }
-        #endregion
+
+        /// <summary>
+        /// Checks to see if the effectivity of this type against the given type
+        /// </summary>
+        public Effectivity CheckEffectivenessAgainst(Type a_otherType)
+        {
+            if (Array.IndexOf(m_effectiveAgainst, a_otherType) != -1) return Effectivity.SuperEffective;
+            if (Array.IndexOf(m_weakAgainst, a_otherType) != -1) return Effectivity.NotEffective;
+            if (Array.IndexOf(m_noEffectOn, a_otherType) != -1) return Effectivity.NoEffect;
+            return Effectivity.Regular;
+        }
     }
 }
