@@ -12,7 +12,7 @@ namespace PokemonClone
         #endregion
 
         #region Constructors
-        public StatusMove(string a_name, Type a_type, string a_description = "") : base(a_name, a_type, a_description)
+        public StatusMove(string a_name, Type a_type, string a_description = "", int a_priority = 0) : base(a_name, a_type, a_description, a_priority)
         {
         }
         #endregion

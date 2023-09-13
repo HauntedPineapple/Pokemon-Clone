@@ -12,7 +12,7 @@ namespace PokemonClone
         #endregion
 
         #region Constructors
-        public DamageMove(string a_name, Type a_type, string a_description = ""):base(a_name, a_type, a_description)
+        public DamageMove(string a_name, Type a_type, string a_description = "", int a_priority = 0) : base(a_name, a_type, a_description, a_priority)
         {
         }
         #endregion
