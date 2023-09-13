@@ -5,8 +5,8 @@
         Normal, Water, Fire, Grass, Electric, Ice, Fighting, Poison, Ground,
         Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, Fairy
     }
-
     enum Effectivity { Regular, SuperEffective, NotEffective, NoEffect }
+    enum Stat { HP, Attack, SpAttack, Defense, SpDefense, Speed }
 
     internal class Program
     {
@@ -14,19 +14,15 @@
         {
             Dictionary<TypeName, Type> types = new Dictionary<TypeName, Type>();
             CreateTypes(types);
-            //CreateMoves();
-            //CreateSpecies();
+            Console.WriteLine(types[0].ToString());
+            //PrintTypes(types);
 
             Dictionary<string, Dictionary<int, string>> natures = new Dictionary<string, Dictionary<int, string>>();
             CreateNatures(natures);
+            //PrintNatures(natures);
 
-            foreach (KeyValuePair<string, Dictionary<int, string>> kvp in natures)
-            {
-                Console.WriteLine(kvp.Key);
-                foreach (KeyValuePair<int, string> entry in kvp.Value)
-                    Console.WriteLine("\n\tKey = {0}, Value = {1}",
-                                  entry.Key, entry.Value);
-            }
+            //CreateMoves();
+            //CreateSpecies();
 
             Console.WriteLine("");
         }
@@ -65,47 +61,69 @@
             a_natures.Add("Naive", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Special Defense" } });
             a_natures.Add("Serious", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Speed" } });
         }
+        static void PrintNatures(Dictionary<string, Dictionary<int, string>> a_natures)
+        {
+            Console.WriteLine("----------------- Natures -----------------");
+            foreach (KeyValuePair<string, Dictionary<int, string>> kvp in a_natures)
+            {
+                Console.Write(kvp.Key + ": ");
+                foreach (KeyValuePair<int, string> entry in kvp.Value)
+                {
+                    if (entry.Key.Equals(1))
+                        Console.Write("Increases " + entry.Value);
+                    if (entry.Key.Equals(-1))
+                        Console.Write(" / Decreases " + entry.Value + "\n");
+                }
+            }
+        }
 
-        #region Types    
         static void CreateTypes(Dictionary<TypeName, Type> a_types)
         {
-            a_types.Add(TypeName.Normal, new Type(TypeName.Normal, new TypeName[] { }, new TypeName[] { TypeName.Rock, TypeName.Steel }, new TypeName[] { TypeName.Ghost }));
+            a_types.Add(TypeName.Normal, new Type(TypeName.Normal, new TypeName[] { }, new TypeName[] { TypeName.Rock, TypeName.Steel }, new TypeName[] { TypeName.Ghost }, new TypeName[] { }, new TypeName[] { TypeName.Fighting }, new TypeName[] { TypeName.Ghost }));
 
-            a_types.Add(TypeName.Fire, new Type(TypeName.Fire, new TypeName[] {TypeName.Grass, TypeName.Ice, TypeName.Bug, TypeName.Steel}, new TypeName[] {TypeName.Fire, TypeName.Water, TypeName.Rock, TypeName.Dragon}, new TypeName[] {}));
-           
-            a_types.Add(TypeName.Water, new Type(TypeName.Water, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Fire, new Type(TypeName.Fire, new TypeName[] { TypeName.Grass, TypeName.Ice, TypeName.Bug, TypeName.Steel }, new TypeName[] { TypeName.Fire, TypeName.Water, TypeName.Rock, TypeName.Dragon }, new TypeName[] { }, new TypeName[] { TypeName.Fire, TypeName.Grass, TypeName.Ice, TypeName.Bug, TypeName.Steel, TypeName.Fairy }, new TypeName[] { TypeName.Water, TypeName.Ground, TypeName.Rock }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Grass, new Type(TypeName.Grass, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Water, new Type(TypeName.Water, new TypeName[] { TypeName.Fire, TypeName.Ground, TypeName.Rock }, new TypeName[] { TypeName.Water, TypeName.Grass, TypeName.Dragon }, new TypeName[] { }, new TypeName[] { TypeName.Fire, TypeName.Water, TypeName.Ice, TypeName.Steel }, new TypeName[] { TypeName.Electric, TypeName.Grass }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Electric, new Type(TypeName.Electric, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Ground}));
+            a_types.Add(TypeName.Electric, new Type(TypeName.Electric, new TypeName[] { TypeName.Water, TypeName.Flying }, new TypeName[] { TypeName.Electric, TypeName.Grass, TypeName.Dragon }, new TypeName[] { TypeName.Ground }, new TypeName[] { TypeName.Electric, TypeName.Flying, TypeName.Steel }, new TypeName[] { TypeName.Ground }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Ice, new Type(TypeName.Ice, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Grass, new Type(TypeName.Grass, new TypeName[] { TypeName.Water, TypeName.Ground, TypeName.Rock }, new TypeName[] { TypeName.Fire, TypeName.Grass, TypeName.Poison, TypeName.Flying, TypeName.Bug, TypeName.Dragon, TypeName.Steel }, new TypeName[] { }, new TypeName[] { TypeName.Water, TypeName.Electric, TypeName.Grass, TypeName.Ground }, new TypeName[] { TypeName.Fire, TypeName.Ice, TypeName.Poison, TypeName.Flying, TypeName.Bug }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Fighting, new Type(TypeName.Fighting, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Ghost}));
+            a_types.Add(TypeName.Ice, new Type(TypeName.Ice, new TypeName[] { TypeName.Grass, TypeName.Ground, TypeName.Flying, TypeName.Dragon }, new TypeName[] { TypeName.Fire, TypeName.Water, TypeName.Ice, TypeName.Steel }, new TypeName[] { }, new TypeName[] { TypeName.Ice }, new TypeName[] { TypeName.Fire, TypeName.Fighting, TypeName.Rock, TypeName.Steel }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Poison, new Type(TypeName.Poison, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Steel}));
+            a_types.Add(TypeName.Fighting, new Type(TypeName.Fighting, new TypeName[] { TypeName.Normal, TypeName.Ice, TypeName.Rock, TypeName.Dark, TypeName.Steel }, new TypeName[] { TypeName.Poison, TypeName.Flying, TypeName.Psychic, TypeName.Bug, TypeName.Fairy }, new TypeName[] { TypeName.Ghost }, new TypeName[] { TypeName.Bug, TypeName.Rock, TypeName.Dark }, new TypeName[] { TypeName.Flying, TypeName.Psychic, TypeName.Fairy }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Ground, new Type(TypeName.Ground, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Poison, new Type(TypeName.Poison, new TypeName[] { TypeName.Grass, TypeName.Fairy }, new TypeName[] { TypeName.Poison, TypeName.Ground, TypeName.Rock, TypeName.Ghost }, new TypeName[] { TypeName.Steel }, new TypeName[] { TypeName.Grass, TypeName.Fighting, TypeName.Poison, TypeName.Bug, TypeName.Fairy }, new TypeName[] { TypeName.Ground, TypeName.Psychic }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Flying, new Type(TypeName.Flying, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Ground, new Type(TypeName.Ground, new TypeName[] { TypeName.Fire, TypeName.Electric, TypeName.Poison, TypeName.Rock, TypeName.Steel }, new TypeName[] { TypeName.Grass, TypeName.Bug }, new TypeName[] { TypeName.Flying }, new TypeName[] { TypeName.Poison, TypeName.Rock }, new TypeName[] { TypeName.Water, TypeName.Grass, TypeName.Ice }, new TypeName[] { TypeName.Electric }));
 
-            a_types.Add(TypeName.Psychic, new Type(TypeName.Psychic, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Flying, new Type(TypeName.Flying, new TypeName[] { TypeName.Grass, TypeName.Bug, TypeName.Fighting }, new TypeName[] { TypeName.Electric, TypeName.Rock, TypeName.Steel }, new TypeName[] { }, new TypeName[] { TypeName.Grass, TypeName.Fighting, TypeName.Bug }, new TypeName[] { TypeName.Electric, TypeName.Ice, TypeName.Rock }, new TypeName[] { TypeName.Ground }));
 
-            a_types.Add(TypeName.Bug, new Type(TypeName.Bug, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Psychic, new Type(TypeName.Psychic, new TypeName[] { TypeName.Fighting, TypeName.Poison }, new TypeName[] { TypeName.Psychic, TypeName.Steel }, new TypeName[] { TypeName.Dark }, new TypeName[] { TypeName.Fighting, TypeName.Psychic }, new TypeName[] { TypeName.Bug, TypeName.Ghost, TypeName.Dark }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Rock, new Type(TypeName.Rock, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Bug, new Type(TypeName.Bug, new TypeName[] { TypeName.Grass, TypeName.Psychic, TypeName.Dark }, new TypeName[] { TypeName.Fire, TypeName.Fighting, TypeName.Poison, TypeName.Flying, TypeName.Ghost, TypeName.Steel, TypeName.Fairy }, new TypeName[] { }, new TypeName[] { TypeName.Grass, TypeName.Fighting, TypeName.Ground }, new TypeName[] { TypeName.Fire, TypeName.Flying, TypeName.Rock }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Ghost, new Type(TypeName.Ghost, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Normal}));
+            a_types.Add(TypeName.Rock, new Type(TypeName.Rock, new TypeName[] { TypeName.Fire, TypeName.Ice, TypeName.Flying, TypeName.Bug }, new TypeName[] { TypeName.Fighting, TypeName.Ground, TypeName.Steel }, new TypeName[] { }, new TypeName[] { TypeName.Normal, TypeName.Fire, TypeName.Poison, TypeName.Flying }, new TypeName[] { TypeName.Water, TypeName.Grass, TypeName.Fighting, TypeName.Ground, TypeName.Steel }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Dragon, new Type(TypeName.Dragon, new TypeName[] {}, new TypeName[] {}, new TypeName[] {TypeName.Fairy}));
+            a_types.Add(TypeName.Ghost, new Type(TypeName.Ghost, new TypeName[] { TypeName.Psychic, TypeName.Ghost }, new TypeName[] { TypeName.Dark }, new TypeName[] { TypeName.Normal }, new TypeName[] { TypeName.Poison, TypeName.Bug }, new TypeName[] { TypeName.Ghost, TypeName.Dark }, new TypeName[] { TypeName.Normal, TypeName.Fighting }));
 
-            a_types.Add(TypeName.Dark, new Type(TypeName.Dark, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Dragon, new Type(TypeName.Dragon, new TypeName[] { TypeName.Dragon }, new TypeName[] { TypeName.Steel }, new TypeName[] { TypeName.Fairy }, new TypeName[] { TypeName.Fire, TypeName.Water, TypeName.Electric, TypeName.Grass }, new TypeName[] { TypeName.Ice, TypeName.Dragon, TypeName.Fairy }, new TypeName[] { }));
 
-            a_types.Add(TypeName.Steel, new Type(TypeName.Steel, new TypeName[] {}, new TypeName[] {}, new TypeName[] {}));
+            a_types.Add(TypeName.Dark, new Type(TypeName.Dark, new TypeName[] { TypeName.Psychic, TypeName.Ghost }, new TypeName[] { TypeName.Fighting, TypeName.Dark, TypeName.Fairy }, new TypeName[] { }, new TypeName[] { TypeName.Ghost, TypeName.Dark }, new TypeName[] { TypeName.Fighting, TypeName.Bug, TypeName.Fairy }, new TypeName[] { TypeName.Psychic }));
 
-            a_types.Add(TypeName.Fairy, new Type(TypeName.Fairy, new TypeName[] {}, new TypeName[] {TypeName.Fire, TypeName.Ground}, new TypeName[] {}));
+            a_types.Add(TypeName.Steel, new Type(TypeName.Steel, new TypeName[] { TypeName.Ice, TypeName.Rock, TypeName.Fairy }, new TypeName[] { TypeName.Fire, TypeName.Water, TypeName.Electric, TypeName.Steel }, new TypeName[] { }, new TypeName[] { TypeName.Normal, TypeName.Grass, TypeName.Ice, TypeName.Flying, TypeName.Psychic, TypeName.Bug, TypeName.Rock, TypeName.Dragon, TypeName.Steel, TypeName.Fairy }, new TypeName[] { TypeName.Fire, TypeName.Fighting, TypeName.Ground }, new TypeName[] { TypeName.Poison }));
+
+            a_types.Add(TypeName.Fairy, new Type(TypeName.Fairy, new TypeName[] { TypeName.Fighting, TypeName.Dragon, TypeName.Dark }, new TypeName[] { TypeName.Fire, TypeName.Poison, TypeName.Steel }, new TypeName[] { }, new TypeName[] { TypeName.Fighting, TypeName.Bug, TypeName.Dark }, new TypeName[] { TypeName.Poison, TypeName.Steel }, new TypeName[] { TypeName.Dragon }));
         }
-        #endregion
+        static void PrintTypes(Dictionary<TypeName, Type> a_types)
+        {
+            Console.WriteLine("----------------- Types -----------------");
+            foreach (KeyValuePair<TypeName, Type> kvp in a_types)
+            {
+                Console.WriteLine(kvp.Value.ToString());
+            }
+        }
+
 
         #region Moves
         static Move? move_flamethrower;
