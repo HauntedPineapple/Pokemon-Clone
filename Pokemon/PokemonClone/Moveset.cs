@@ -12,6 +12,7 @@ namespace PokemonClone
         public int[] m_PPs = new int[4];
         public int m_numMoves = 0;
 
+        #region Constructors
         public Moveset(Move[] a_moves)
         {
             if (a_moves.Length <= 4)
@@ -56,7 +57,8 @@ namespace PokemonClone
                 m_PPs[m_numMoves] = a_move4.PP;
                 m_numMoves++;
             }
-        }
+        } 
+        #endregion
 
         /// <param name="a_move">move to be learned</param>
         /// <returns>Returns false if a new move cannot be learned</returns>

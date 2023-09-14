@@ -48,6 +48,7 @@ namespace PokemonClone
             m_stats = a_stats;
             m_IVs = a_IVs;
         }
+
         public Pokemon(Species a_species, string a_name, int a_level, Moveset a_moveset, Stats a_stats, Stats a_IVs) : this(a_species, a_level, a_moveset, a_stats, a_IVs)
         {
             m_nickname = a_name;
@@ -69,6 +70,7 @@ namespace PokemonClone
         public Type SecondaryType { get { return m_species.SecondaryType; } }
         public int Level { get { return m_level; } }
         public int CurrentHP { get { return m_currentHP; } }
+
         public Stats Stats { get { return m_stats; } }
         public int HP { get { return m_stats.hp; } }
         public int Attack { get { return m_stats.attack; } }

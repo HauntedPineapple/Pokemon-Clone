@@ -78,15 +78,11 @@
             PrintTypes();
             TestTypeClass();
 
-
-
             //CreateMoves();
             //CreateSpecies();
 
             //Console.WriteLine("");
         }
-
-
 
         public static Dictionary<TypeName, Type> TYPES = new Dictionary<TypeName, Type>();
         #region Type Creation
