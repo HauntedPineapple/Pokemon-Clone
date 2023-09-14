@@ -1,12 +1,8 @@
 ﻿namespace PokemonClone
 {
-    enum TypeName
-    {
-        Normal, Water, Fire, Grass, Electric, Ice, Fighting, Poison, Ground,
-        Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, Fairy
-    }
+    enum TypeName { Normal, Water, Fire, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, Fairy }
     enum Effectivity { Regular, SuperEffective, NotEffective, NoEffect }
-    //enum Stat { HP, Attack, SpAttack, Defense, SpDefense, Speed }
+    enum StatName { HP, Attack, SpecialAttack, Defense, SpecialDefense, Speed }
     struct Stats
     {
         public int hp;
@@ -27,8 +23,53 @@
         }
     }
 
+    struct Nature
+    {
+        public string name;
+        public StatName increasedStat;
+        public StatName decreasedStat;
+
+        public Nature(string name, StatName increasedStat, StatName decreasedStat)
+        {
+            this.name = name;
+            this.increasedStat = increasedStat;
+            this.decreasedStat = decreasedStat;
+        }
+    }
+
     internal class Program
     {
+        #region Natures
+        public static Nature Hardy = new Nature("Hardy", StatName.Attack, StatName.Attack);
+        public static Nature Lonely = new Nature("Lonely", StatName.Attack, StatName.Defense);
+        public static Nature Adamant = new Nature("Adamant", StatName.Attack, StatName.SpecialAttack);
+        public static Nature Naughty = new Nature("Naughty", StatName.Attack, StatName.SpecialDefense);
+        public static Nature Brave = new Nature("Brave", StatName.Attack, StatName.Speed);
+
+        public static Nature Bold = new Nature("Bold", StatName.Defense, StatName.Attack);
+        public static Nature Docile = new Nature("Docile", StatName.Defense, StatName.Defense);
+        public static Nature Impish = new Nature("Impish", StatName.Defense, StatName.SpecialAttack);
+        public static Nature Lax = new Nature("Lax", StatName.Defense, StatName.SpecialDefense);
+        public static Nature Relaxed = new Nature("Relaxed", StatName.Defense, StatName.Speed);
+
+        public static Nature Modest = new Nature("Modest", StatName.SpecialAttack, StatName.Attack);
+        public static Nature Mild = new Nature("Mild", StatName.SpecialAttack, StatName.Defense);
+        public static Nature Bashful = new Nature("Bashful", StatName.SpecialAttack, StatName.SpecialAttack);
+        public static Nature Rash = new Nature("Rash", StatName.SpecialAttack, StatName.SpecialDefense);
+        public static Nature Quiet = new Nature("Quiet", StatName.SpecialAttack, StatName.Speed);
+
+        public static Nature Calm = new Nature("Calm", StatName.SpecialDefense, StatName.Attack);
+        public static Nature Gentle = new Nature("Gentle", StatName.SpecialDefense, StatName.Defense);
+        public static Nature Careful = new Nature("Careful", StatName.SpecialDefense, StatName.SpecialAttack);
+        public static Nature Quirky = new Nature("Quirky", StatName.SpecialDefense, StatName.SpecialDefense);
+        public static Nature Sassy = new Nature("Sassy", StatName.SpecialDefense, StatName.Speed);
+
+        public static Nature Timid = new Nature("Timid", StatName.Speed, StatName.Attack);
+        public static Nature Hasty = new Nature("Hasty", StatName.Speed, StatName.Defense);
+        public static Nature Jolly = new Nature("Jolly", StatName.Speed, StatName.SpecialAttack);
+        public static Nature Naive = new Nature("Naive", StatName.Speed, StatName.SpecialDefense);
+        public static Nature Serious = new Nature("Serious", StatName.Speed, StatName.Speed);
+        #endregion
 
         static void Main(string[] args)
         {
@@ -37,69 +78,13 @@
             PrintTypes();
             TestTypeClass();
 
-            //Dictionary<string, Dictionary<int, string>> natures = new Dictionary<string, Dictionary<int, string>>();
-            CreateNatures();
-            PrintNatures();
-
             //CreateMoves();
             //CreateSpecies();
 
             //Console.WriteLine("");
         }
 
-        public static Dictionary<string, Dictionary<int, string>> NATURES = new Dictionary<string, Dictionary<int, string>>();
-        #region Create Natures
-        // public static KeyValuePair<string, Dictionary<int, string>> lonelynature = new KeyValuePair<string, Dictionary<int, string>>("Lonely", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Defense" } });
-        static void CreateNatures()
-        {
-            // a 1 int value indicates the corresponding stat is increased by 10%
-            // a -1 int value indicates the corresponding stat is decreased by 10%
-            NATURES.Add("Hardy", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Attack" } });
-            NATURES.Add("Lonely", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Defense" } });
-            NATURES.Add("Adamant", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Special Attack" } });
-            NATURES.Add("Naughty", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Special Defense" } });
-            NATURES.Add("Brave", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Speed" } });
 
-            NATURES.Add("Bold", new Dictionary<int, string> { { 1, "Defense" }, { -1, "Attack" } });
-            NATURES.Add("Docile", new Dictionary<int, string> { { 1, "Defense" }, { -1, "Defense" } });
-            NATURES.Add("Impish", new Dictionary<int, string> { { 1, "Defense" }, { -1, "Special Attack" } });
-            NATURES.Add("Lax", new Dictionary<int, string> { { 1, "Defense" }, { -1, "Special Defense" } });
-            NATURES.Add("Relaxed", new Dictionary<int, string> { { 1, "Defense" }, { -1, "Speed" } });
-
-            NATURES.Add("Modest", new Dictionary<int, string> { { 1, "Special Attack" }, { -1, "Attack" } });
-            NATURES.Add("Mild", new Dictionary<int, string> { { 1, "Special Attack" }, { -1, "Defense" } });
-            NATURES.Add("Bashful", new Dictionary<int, string> { { 1, "Special Attack" }, { -1, "Special Attack" } });
-            NATURES.Add("Rash", new Dictionary<int, string> { { 1, "Special Attack" }, { -1, "Special Defense" } });
-            NATURES.Add("Quiet", new Dictionary<int, string> { { 1, "Special Attack" }, { -1, "Speed" } });
-
-            NATURES.Add("Calm", new Dictionary<int, string> { { 1, "Special Defense" }, { -1, "Attack" } });
-            NATURES.Add("Gentle", new Dictionary<int, string> { { 1, "Special Defense" }, { -1, "Defense" } });
-            NATURES.Add("Careful", new Dictionary<int, string> { { 1, "Special Defense" }, { -1, "Special Attack" } });
-            NATURES.Add("Quirky", new Dictionary<int, string> { { 1, "Special Defense" }, { -1, "Special Defense" } });
-            NATURES.Add("Sassy", new Dictionary<int, string> { { 1, "Special Defense" }, { -1, "Speed" } });
-
-            NATURES.Add("Timid", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Attack" } });
-            NATURES.Add("Hasty", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Defense" } });
-            NATURES.Add("Jolly", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Special Attack" } });
-            NATURES.Add("Naive", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Special Defense" } });
-            NATURES.Add("Serious", new Dictionary<int, string> { { 1, "Speed" }, { -1, "Speed" } });
-        }
-        static void PrintNatures()
-        {
-            Console.WriteLine("----------------- Natures -----------------");
-            foreach (KeyValuePair<string, Dictionary<int, string>> kvp in NATURES)
-            {
-                Console.Write(kvp.Key + ": ");
-                foreach (KeyValuePair<int, string> entry in kvp.Value)
-                {
-                    if (entry.Key.Equals(1))
-                        Console.Write("Increases " + entry.Value);
-                    if (entry.Key.Equals(-1))
-                        Console.Write(" / Decreases " + entry.Value + "\n");
-                }
-            }
-        }
-        #endregion
 
         public static Dictionary<TypeName, Type> TYPES = new Dictionary<TypeName, Type>();
         #region Type Creation
