@@ -41,6 +41,8 @@
     {
         public Move[] moves = new Move[4];
         public int[] movePPs = new int[4];
+        public int numMoves = 0;
+
         public Moveset(Move[] a_moves)
         {
             if (a_moves.Length <= 4)
@@ -49,6 +51,7 @@
                 {
                     moves[i] = a_moves[i];
                     movePPs[i] = a_moves[i].PP;
+                    numMoves++;
                 }
             }
             else
@@ -59,42 +62,51 @@
         {
             if (a_move1 != null)
             {
-
+                moves[numMoves] = a_move1;
+                movePPs[numMoves] = a_move1.PP;
+                numMoves++;
             }
 
             if (a_move2 != null)
             {
-
+                moves[numMoves] = a_move2;
+                movePPs[numMoves] = a_move2.PP;
+                numMoves++;
             }
 
             if (a_move3 != null)
             {
+                moves[numMoves] = a_move3;
+                movePPs[numMoves] = a_move3.PP;
+                numMoves++;
             }
 
             if (a_move4 != null)
             {
-
+                moves[numMoves] = a_move4;
+                movePPs[numMoves] = a_move4.PP;
+                numMoves++;
             }
         }
 
-        public void LearnNewMove(Move a_move)
+        /// <param name="a_move">move to be learned</param>
+        /// <returns>Returns false if a new move cannot be learned</returns>
+        public bool LearnNewMove(Move a_move)
         {
-            if (moves.Length == 4)
+            if (numMoves == 4)
             {
-
+                return false;
             }
-            else
-            {
-            }
-        }
 
-        public bool CanUseMove(Move a_move)
-        {
-            //if ()
-            //{
-
-            //}
             return true;
+        }
+
+        public bool CanUseMove(int a_moveIndex)
+        {
+            if (movePPs[a_moveIndex] > 0)
+                return true;
+
+            return false;
         }
     }
 
@@ -138,6 +150,8 @@
             CreateTypes();
             PrintTypes();
             TestTypeClass();
+
+
 
             //CreateMoves();
             //CreateSpecies();
