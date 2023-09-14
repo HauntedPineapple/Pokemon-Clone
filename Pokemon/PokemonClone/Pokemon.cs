@@ -67,8 +67,8 @@ namespace PokemonClone
         }
         public Type PrimaryType { get { return m_species.PrimaryType; } }
         public Type SecondaryType { get { return m_species.SecondaryType; } }
+        public int Level { get { return m_level; } }
         public int CurrentHP { get { return m_currentHP; } }
-
         public Stats Stats { get { return m_stats; } }
         public int HP { get { return m_stats.hp; } }
         public int Attack { get { return m_stats.attack; } }
