@@ -117,7 +117,7 @@ namespace PokemonClone
         static public double CalculateDamageMultiplier(Type a_attackingType, Type[] a_defendingDualType)
         {
             if (a_defendingDualType.Length != 2)
-                throw new ArgumentException("Error, must use an array containing TWO type objects", "a_defendingDualType");
+                throw new ArgumentException("Error, must use an array containing TWO type objects", nameof(a_defendingDualType));
             double multiplierA = CalculateDamageMultiplier(a_attackingType, a_defendingDualType[0]);
             double multiplierB = CalculateDamageMultiplier(a_attackingType, a_defendingDualType[1]);
             return CalculateDamageMultiplier(a_attackingType, a_defendingDualType[0]) * CalculateDamageMultiplier(a_attackingType, a_defendingDualType[1]);
