@@ -14,7 +14,7 @@ namespace PokemonClone
         private Species m_species;
         private string m_nickname;
 
-        KeyValuePair<string, Dictionary<int, string>> m_nature;
+        private Nature m_nature;
 
         private int m_level;
         private int m_currentHP;
@@ -97,17 +97,68 @@ namespace PokemonClone
         }
 
         // --------- HELPER METHODS ---------
-        private void CalculateStat(int a_statBase, int a_statIV)
+        private void CalculateStats()
         {
-            int stat = (2 * a_statBase + a_statIV + (m_EV / 4) * m_level) / 100;
-            stat += 5;
+            if (m_nature.increasedStat == StatName.Attack && m_nature.decreasedStat == StatName.Attack)
+                m_stats.attack = CalculateStat(m_species.BaseStats.attack, m_IVs.attack, 1);
+            else if (m_nature.increasedStat == StatName.Attack)
+                m_stats.attack = CalculateStat(m_species.BaseStats.attack, m_IVs.attack, 1.1);
+            else if (m_nature.decreasedStat == StatName.Attack)
+                m_stats.attack = CalculateStat(m_species.BaseStats.attack, m_IVs.attack, 0.9);
+            else
+                m_stats.attack = CalculateStat(m_species.BaseStats.attack, m_IVs.attack, 1);
 
+            if (m_nature.increasedStat == StatName.SpecialAttack && m_nature.decreasedStat == StatName.SpecialAttack)
+                m_stats.specialAttack = CalculateStat(m_species.BaseStats.specialAttack, m_IVs.specialAttack, 1);
+            else if (m_nature.increasedStat == StatName.SpecialAttack)
+                m_stats.specialAttack = CalculateStat(m_species.BaseStats.specialAttack, m_IVs.specialAttack, 1.1);
+            else if (m_nature.decreasedStat == StatName.SpecialAttack)
+                m_stats.specialAttack = CalculateStat(m_species.BaseStats.specialAttack, m_IVs.specialAttack, 0.9);
+            else
+                m_stats.specialAttack = CalculateStat(m_species.BaseStats.specialAttack, m_IVs.specialAttack, 1);
+
+            if (m_nature.increasedStat == StatName.Defense && m_nature.decreasedStat == StatName.Defense)
+                m_stats.defense = CalculateStat(m_species.BaseStats.defense, m_IVs.defense, 1);
+            else if (m_nature.increasedStat == StatName.Defense)
+                m_stats.defense = CalculateStat(m_species.BaseStats.defense, m_IVs.defense, 1.1);
+            else if (m_nature.decreasedStat == StatName.Defense)
+                m_stats.defense = CalculateStat(m_species.BaseStats.defense, m_IVs.defense, 0.9);
+            else
+                m_stats.defense = CalculateStat(m_species.BaseStats.defense, m_IVs.defense, 1);
+
+            if (m_nature.increasedStat == StatName.SpecialDefense && m_nature.decreasedStat == StatName.SpecialDefense)
+                m_stats.specialDefense = CalculateStat(m_species.BaseStats.specialDefense, m_IVs.specialDefense, 1);
+            else if (m_nature.increasedStat == StatName.SpecialDefense)
+                m_stats.specialDefense = CalculateStat(m_species.BaseStats.specialDefense, m_IVs.specialDefense, 1.1);
+            else if (m_nature.decreasedStat == StatName.SpecialDefense)
+                m_stats.specialDefense = CalculateStat(m_species.BaseStats.specialDefense, m_IVs.specialDefense, 0.9);
+            else
+                m_stats.specialDefense = CalculateStat(m_species.BaseStats.specialDefense, m_IVs.specialDefense, 1);
+
+            if (m_nature.increasedStat == StatName.Speed && m_nature.decreasedStat == StatName.Speed)
+                m_stats.speed = CalculateStat(m_species.BaseStats.speed, m_IVs.speed, 1);
+            else if (m_nature.increasedStat == StatName.Speed)
+                m_stats.speed = CalculateStat(m_species.BaseStats.speed, m_IVs.speed, 1.1);
+            else if (m_nature.decreasedStat == StatName.Speed)
+                m_stats.speed = CalculateStat(m_species.BaseStats.speed, m_IVs.speed, 0.9);
+            else
+                m_stats.speed = CalculateStat(m_species.BaseStats.speed, m_IVs.speed, 1);
+
+            CalculateHP();
+        }
+
+        private int CalculateStat(int a_statBase, int a_statIV, double a_natureMultiplier)
+        {
+            double stat = ((2 * a_statBase + a_statIV + (m_EV / 4) * m_level) / 100) + 5;
+            stat *= a_natureMultiplier;
+            return (int)stat;
         }
 
         private void CalculateHP()
         {
-            int hp = (2 * m_species.BaseHP + m_IVs.hp + (m_EV / 4) * m_level) / 100;
-            m_stats.hp = hp + (m_level + 10);
+            double hp = (2 * m_species.BaseHP + m_IVs.hp + (m_EV / 4) * m_level) / 100;
+            hp += m_level + 10;
+            m_stats.hp = (int)hp;
         }
 
         private void RollIVs()
