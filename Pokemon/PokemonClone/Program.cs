@@ -39,62 +39,61 @@
 
     struct Moveset
     {
-        public Move? move1 = null;
-        public Move? move2 = null;
-        public Move? move3 = null;
-        public Move? move4 = null;
-        public int move1PP = -1;
-        public int move2PP = -1;
-        public int move3PP = -1;
-        public int move4PP = -1;
-        public int numMoves = 0;
+        public Move[] moves = new Move[4];
+        public int[] movePPs = new int[4];
+        public Moveset(Move[] a_moves)
+        {
+            if (a_moves.Length <= 4)
+            {
+                for (int i = 0; i < a_moves.Length; i++)
+                {
+                    moves[i] = a_moves[i];
+                    movePPs[i] = a_moves[i].PP;
+                }
+            }
+            else
+                throw new ArgumentException("ERROR: array must contain FOUR or less moves", nameof(a_moves));
+        }
 
         public Moveset(Move? a_move1, Move? a_move2, Move? a_move3, Move? a_move4)
         {
-            move1 = a_move1;
             if (a_move1 != null)
             {
-                move1PP = a_move1.PP;
-                numMoves++;
+
             }
-            move2 = a_move2;
+
             if (a_move2 != null)
             {
-                move2PP = a_move2.PP;
-                numMoves++;
+
             }
-            move3 = a_move3;
+
             if (a_move3 != null)
             {
-                move3PP = a_move3.PP;
-                numMoves++;
             }
-            move4 = a_move4;
+
             if (a_move4 != null)
             {
-                move4PP = a_move4.PP;
-                numMoves++;
+
             }
         }
 
         public void LearnNewMove(Move a_move)
         {
-            if (numMoves == 4)
+            if (moves.Length == 4)
             {
 
             }
             else
             {
-                numMoves++;
             }
         }
 
         public bool CanUseMove(Move a_move)
         {
-            if (43 == 1)
-            {
+            //if ()
+            //{
 
-            }
+            //}
             return true;
         }
     }
