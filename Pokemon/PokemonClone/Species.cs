@@ -59,8 +59,15 @@ namespace PokemonClone
         #endregion
 
         public string Name { get { return m_name; } }
+        public string Description { get { return m_description; } }
         public Type PrimaryType { get { return m_type1; } }
         public Type SecondaryType { get { return m_type2; } }
+        public int BaseHP { get { return m_baseHP; } }
+        public int BaseAttack { get { return m_baseAttack; } }
+        public int BaseSpecialAttack { get { return m_baseSpecialAttack; } }
+        public int BaseDefense { get { return m_baseDefense; } }
+        public int BaseSpecialDefense { get { return m_baseSpecialDefense; } }
+        public int BaseSpeed { get { return m_baseSpeed; } }
 
         public override string ToString()
         {
