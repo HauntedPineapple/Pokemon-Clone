@@ -9,7 +9,7 @@ namespace PokemonClone
     internal class Move
     {
         protected string m_name;
-        protected string m_ID;
+        //protected string m_ID;
         protected string m_description;
         protected Type m_type;
 
@@ -23,10 +23,10 @@ namespace PokemonClone
         protected bool m_isSpecial;
         //protected bool m_makesContact;
 
-        public Move(string a_name, Type a_type, int a_power, int a_accuracy, int a_PP, bool a_isSpecial = false, string a_description = "", string a_ID = "") //bool a_makesContact = false) //int a_priority = 0)
+        public Move(string a_name, Type a_type, int a_power, int a_accuracy, int a_PP, bool a_isSpecial = false, string a_description = "") // string a_ID = "") //bool a_makesContact = false) //int a_priority = 0)
         {
             m_name = a_name;
-            m_ID = a_ID;
+            //m_ID = a_ID;
             m_description = a_description;
             m_type = a_type;
             m_pp = a_PP;
@@ -39,7 +39,7 @@ namespace PokemonClone
 
         public Type Type { get { return m_type; } }
         public string Name { get { return m_name; } }
-        public string ID { get { return m_ID; } }
+        //public string ID { get { return m_ID; } }
         public string Description { get { return m_description; } }
         public int PP { get { return m_pp; } }
         public int Power { get { return m_power; } }
@@ -52,30 +52,32 @@ namespace PokemonClone
 
         public override string ToString()
         {
-            return Name;
-        }
-
-        public void UseMove(Pokemon a_pokemon)
-        {// TODO
+            string output = m_name;
+            output += "\nType: " + m_type + "   Categpry: ";
+            if (m_isSpecial) output += "Special";
+            else output += "Physical";
+            output += "\nAccuracy: " + m_type + "   Power: " + m_power;
+            //if (m_description != "") output += m_description;
+            return output;
         }
 
         public void UseMove(Pokemon a_attackingPokemon, Pokemon a_defendingPokemon)
         {// TODO
         }
 
-        public int CalculateDamage(Pokemon a_attackingPokemon, Pokemon a_defendingPokemon)
+        public static int CalculateDamage(Move a_move, Pokemon a_attackingPokemon, Pokemon a_defendingPokemon)
         {
             double effectiveness = 1;
             // calculate effectiveness
             if (a_defendingPokemon.PrimaryType == a_defendingPokemon.SecondaryType)
             {
-                effectiveness = Type.CalculateDamageMultiplier(this.m_type, a_defendingPokemon.PrimaryType);
+                effectiveness = Type.CalculateDamageMultiplier(a_move.Type, a_defendingPokemon.PrimaryType);
                 if (effectiveness == 0)
                     return 0;
             }
             else
             {
-                effectiveness = Type.CalculateDamageMultiplier(this.m_type, a_defendingPokemon.PrimaryType, a_defendingPokemon.SecondaryType);
+                effectiveness = Type.CalculateDamageMultiplier(a_move.Type, a_defendingPokemon.PrimaryType, a_defendingPokemon.SecondaryType);
                 if (effectiveness == 0)
                     return 0;
             }
@@ -88,7 +90,7 @@ namespace PokemonClone
 
             // calculate same-type-attack-bonus
             double stab = 1;
-            if (a_attackingPokemon.PrimaryType == m_type || a_attackingPokemon.SecondaryType == m_type)
+            if (a_attackingPokemon.PrimaryType == a_move.Type || a_attackingPokemon.SecondaryType == a_move.Type)
             {
                 stab = 1.5;
             }
@@ -101,7 +103,7 @@ namespace PokemonClone
             }
 
             int attack, defense;
-            if (m_isSpecial)
+            if (a_move.IsSpecial)
             { // attack is special
                 attack = a_attackingPokemon.SpecialAttack;
                 defense = a_defendingPokemon.SpecialDefense;
@@ -113,7 +115,7 @@ namespace PokemonClone
             }
 
             int level = a_attackingPokemon.Level;
-            int power = m_power;
+            int power = a_move.Power;
 
             // Calulate damage
             double totalDamage = (2 + level) / 5;

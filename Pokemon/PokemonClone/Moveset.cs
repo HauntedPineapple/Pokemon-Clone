@@ -71,10 +71,9 @@ namespace PokemonClone
         }
 
         public bool CanUseMove(int a_moveIndex)
-        {// TODO
+        {
             if (m_PPs[a_moveIndex] > 0)
                 return true;
-
             return false;
         }
     }
