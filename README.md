@@ -33,6 +33,7 @@ D is the effective Defense stat of the target if the used move is a physical mov
 Power is the effective power of the used move.
 
 Critical is 2 for a critical hit, 3 if the move lands a critical hit and the attacker's Ability is Sniper, and 1 otherwise.
+https://bulbapedia.bulbagarden.net/wiki/Critical_hit#Probability:~:text=255-,Generation%20II%20onwards,-Damage
 
 random is a random factor. Namely, it is recognized as a multiplication from a random integer between 85 and 100, inclusive, then divided by 100. Decimals are rounded down to the nearest integer.
 
