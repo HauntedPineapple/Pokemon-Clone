@@ -12,14 +12,14 @@
         public int specialDefense;
         public int speed;
 
-        public Stats(int hp, int attack, int specialAttack, int defense, int specialDefense, int speed)
+        public Stats(int a_hp, int a_attack, int a_specialAttack, int a_defense, int a_specialDefense, int a_speed)
         {
-            this.hp = hp;
-            this.attack = attack;
-            this.specialAttack = specialAttack;
-            this.defense = defense;
-            this.specialDefense = specialDefense;
-            this.speed = speed;
+            hp = a_hp;
+            attack = a_attack;
+            specialAttack = a_specialAttack;
+            defense = a_defense;
+            specialDefense = a_specialDefense;
+            speed = a_speed;
         }
     }
 
@@ -29,11 +29,39 @@
         public StatName increasedStat;
         public StatName decreasedStat;
 
-        public Nature(string name, StatName increasedStat, StatName decreasedStat)
+        public Nature(string a_name, StatName a_increasedStat, StatName a_decreasedStat)
         {
-            this.name = name;
-            this.increasedStat = increasedStat;
-            this.decreasedStat = decreasedStat;
+            name = a_name;
+            increasedStat = a_increasedStat;
+            decreasedStat = a_decreasedStat;
+        }
+    }
+
+    struct Moveset
+    {
+        public Move? move1 = null;
+        public Move? move2 = null;
+        public Move? move3 = null;
+        public Move? move4 = null;
+        public int move1PP = -1;
+        public int move2PP = -1;
+        public int move3PP = -1;
+        public int move4PP = -1;
+
+        public Moveset(Move? a_move1, Move? a_move2, Move? a_move3, Move? a_move4)
+        {
+            move1 = a_move1;
+            if (a_move1 != null)
+                move1PP = a_move1.PP;
+            move2 = a_move2;
+            if (a_move2 != null)
+                move1PP = a_move2.PP;
+            move3 = a_move3;
+            if (a_move3 != null)
+                move1PP = a_move3.PP;
+            move4 = a_move4;
+            if (a_move4 != null)
+                move1PP = a_move4.PP;
         }
     }
 

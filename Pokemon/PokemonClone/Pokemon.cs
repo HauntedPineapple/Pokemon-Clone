@@ -22,29 +22,33 @@ namespace PokemonClone
         private Stats m_stats;
         private Stats m_IVs;
 
-        private Move[] m_moveset = new Move[4];
-        private int[] m_currentPP = new int[4];
+        private Moveset m_moveset;
+        //private Move[] m_moveset = new Move[4];
+        //private int[] m_currentPP = new int[4];
 
         #region Constructors
-        public Pokemon(Species a_species, int a_level, Move[] a_moveset)
+        public Pokemon(Species a_species, int a_level, Moveset a_moveset)
         {
             m_species = a_species;
             m_nickname = "";
             m_level = a_level;
-
-            if (a_moveset.Length <= 4)
-            {
-                for (int i = 0; i < a_moveset.Length; i++)
-                {
-                    m_moveset[i] = a_moveset[i];
-                    m_currentPP[i] = m_moveset[i].PP;
-                }
-            }
+            m_moveset = a_moveset;
 
             RollIVs();
+            CalculateStats();
         }
 
-        public Pokemon(Species a_species, string a_name, int a_level, Move[] a_moveset) : this(a_species, a_level, a_moveset)
+        public Pokemon(Species a_species, string a_name, int a_level, Moveset a_moveset) : this(a_species, a_level, a_moveset)
+        {
+            m_nickname = a_name;
+        }
+
+        public Pokemon(Species a_species, int a_level, Moveset a_moveset, Stats a_stats, Stats a_IVs) : this(a_species, a_level, a_moveset)
+        {
+            m_stats = a_stats;
+            m_IVs = a_IVs;
+        }
+        public Pokemon(Species a_species, string a_name, int a_level, Moveset a_moveset, Stats a_stats, Stats a_IVs) : this(a_species, a_level, a_moveset, a_stats, a_IVs)
         {
             m_nickname = a_name;
         }
