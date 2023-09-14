@@ -47,21 +47,55 @@
         public int move2PP = -1;
         public int move3PP = -1;
         public int move4PP = -1;
+        public int numMoves = 0;
 
         public Moveset(Move? a_move1, Move? a_move2, Move? a_move3, Move? a_move4)
         {
             move1 = a_move1;
             if (a_move1 != null)
+            {
                 move1PP = a_move1.PP;
+                numMoves++;
+            }
             move2 = a_move2;
             if (a_move2 != null)
-                move1PP = a_move2.PP;
+            {
+                move2PP = a_move2.PP;
+                numMoves++;
+            }
             move3 = a_move3;
             if (a_move3 != null)
-                move1PP = a_move3.PP;
+            {
+                move3PP = a_move3.PP;
+                numMoves++;
+            }
             move4 = a_move4;
             if (a_move4 != null)
-                move1PP = a_move4.PP;
+            {
+                move4PP = a_move4.PP;
+                numMoves++;
+            }
+        }
+
+        public void LearnNewMove(Move a_move)
+        {
+            if (numMoves == 4)
+            {
+
+            }
+            else
+            {
+                numMoves++;
+            }
+        }
+
+        public bool CanUseMove(Move a_move)
+        {
+            if (43 == 1)
+            {
+
+            }
+            return true;
         }
     }
 
