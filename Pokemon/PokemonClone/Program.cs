@@ -10,6 +10,7 @@
 
     internal class Program
     {
+
         static void Main(string[] args)
         {
             Dictionary<TypeName, Type> types = new Dictionary<TypeName, Type>();
@@ -27,6 +28,7 @@
             //Console.WriteLine("");
         }
 
+        // public static KeyValuePair<string, Dictionary<int, string>> lonelynature = new KeyValuePair<string, Dictionary<int, string>>("Lonely", new Dictionary<int, string> { { 1, "Attack" }, { -1, "Defense" } });
         static void CreateNatures(Dictionary<string, Dictionary<int, string>> a_natures)
         {
             // a 1 int value indicates the corresponding stat is increased by 10%
@@ -77,6 +79,7 @@
             }
         }
 
+        // public static Type NORMAL = new Type(TypeName.Normal, new TypeName[] { }, new TypeName[] { TypeName.Rock, TypeName.Steel }, new TypeName[] { TypeName.Ghost }, new TypeName[] { }, new TypeName[] { TypeName.Fighting }, new TypeName[] { TypeName.Ghost }));
         static void CreateTypes(Dictionary<TypeName, Type> a_types)
         {
             a_types.Add(TypeName.Normal, new Type(TypeName.Normal, new TypeName[] { }, new TypeName[] { TypeName.Rock, TypeName.Steel }, new TypeName[] { TypeName.Ghost }, new TypeName[] { }, new TypeName[] { TypeName.Fighting }, new TypeName[] { TypeName.Ghost }));
@@ -175,7 +178,6 @@
             //    }
             //}
         }
-
 
         #region Moves
         static Move? move_flamethrower;

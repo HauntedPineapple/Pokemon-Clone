@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace PokemonClone
 {
-    internal class DamageMove : Move
+    internal class DamageMove //: Move
     {
         #region Member Variables
         #endregion
 
         #region Constructors
-        public DamageMove(string a_name, Type a_type, string a_description = "", int a_priority = 0) : base(a_name, a_type, a_description, a_priority)
-        {
-        }
+        //public DamageMove(string a_name, Type a_type, string a_description = "", int a_priority = 0) : base(a_name, a_type, a_description, a_priority)
+        //{
+        //}
         #endregion
 
         #region Properties

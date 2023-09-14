@@ -8,7 +8,6 @@ namespace PokemonClone
 {
     internal class Species
     {
-        #region Member Variables
         private string m_name;
         private string m_description;
         private Type m_type1;
@@ -20,10 +19,9 @@ namespace PokemonClone
         private int m_baseDefense;
         private int m_baseSpecialDefense;
         private int m_baseSpeed;
-        #endregion
 
         #region Constructors
-        public Species(string a_name, Type a_type1, Type a_type2, string a_description, 
+        public Species(string a_name, Type a_type1, Type a_type2, string a_description,
             int a_baseHP, int a_baseAttack, int a_baseSpecialAttack, int a_baseDefense, int a_baseSpecialDefense, int a_baseSpeed)
         {
             m_name = a_name;
@@ -45,17 +43,13 @@ namespace PokemonClone
         }
         #endregion
 
-        #region Properties
         public string Name { get { return m_name; } }
         public Type PrimaryType { get { return m_type1; } }
         public Type SecondaryType { get { return m_type2; } }
-        #endregion
 
-        #region Methods
         public override string ToString()
         {
             return "";
         }
-        #endregion
     }
 }

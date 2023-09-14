@@ -8,9 +8,8 @@ namespace PokemonClone
 {
     internal class Pokemon
     {
-        const int EV = 42;
+        const int EV = 42; // 252(max EVs)/6(num stats)
 
-        #region Member Variables
         private Species m_species;
         private string m_nickname;
 
@@ -34,7 +33,6 @@ namespace PokemonClone
         private int m_speedIV;
 
         private Move[] m_moveset = new Move[4];
-        #endregion
 
         #region Constructors
         public Pokemon(Species a_species, int a_level)
@@ -93,7 +91,6 @@ namespace PokemonClone
         public Type SecondaryType { get { return m_species.SecondaryType; } }
         #endregion
 
-        #region Methods
         public override string ToString()
         {
             string output = "";
@@ -107,6 +104,22 @@ namespace PokemonClone
 
             return output;
         }
-        #endregion
+
+        // --------- HELPER METHODS ---------
+        private void CalculateStats()
+        { // uses these formulas: https://bulbapedia.bulbagarden.net/wiki/Stat#:~:text=190-,Generation%20III%20onward,-H
+
+        }
+
+        private void RollIVs()
+        {
+            Random random = new Random();
+            m_hpIV = random.Next(32);
+            m_attackIV = random.Next(32);
+            m_specialAttackIV = random.Next(32);
+            m_defenseIV = random.Next(32);
+            m_specialDefenseIV = random.Next(32);
+            m_speedIV = random.Next(32);
+        }
     }
 }
