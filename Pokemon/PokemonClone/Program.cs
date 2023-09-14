@@ -12,13 +12,13 @@
         public int specialDefense;
         public int speed;
 
-        public Stats(int hp, int attack, int spAttack, int defense, int spDefense, int speed)
+        public Stats(int hp, int attack, int specialAttack, int defense, int specialDefense, int speed)
         {
             this.hp = hp;
             this.attack = attack;
-            this.specialAttack = spAttack;
+            this.specialAttack = specialAttack;
             this.defense = defense;
-            this.specialDefense = spDefense;
+            this.specialDefense = specialDefense;
             this.speed = speed;
         }
     }
