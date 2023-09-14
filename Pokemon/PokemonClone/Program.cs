@@ -7,23 +7,22 @@
     }
     enum Effectivity { Regular, SuperEffective, NotEffective, NoEffect }
     //enum Stat { HP, Attack, SpAttack, Defense, SpDefense, Speed }
-
     struct Stats
     {
         public int hp;
         public int attack;
-        public int spAttack;
+        public int specialAttack;
         public int defense;
-        public int spDefense;
+        public int specialDefense;
         public int speed;
 
         public Stats(int hp, int attack, int spAttack, int defense, int spDefense, int speed)
         {
             this.hp = hp;
             this.attack = attack;
-            this.spAttack = spAttack;
+            this.specialAttack = spAttack;
             this.defense = defense;
-            this.spDefense = spDefense;
+            this.specialDefense = spDefense;
             this.speed = speed;
         }
     }

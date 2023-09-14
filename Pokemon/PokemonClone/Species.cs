@@ -13,12 +13,7 @@ namespace PokemonClone
         private Type m_type1;
         private Type m_type2;
 
-        private int m_baseHP;
-        private int m_baseAttack;
-        private int m_baseSpecialAttack;
-        private int m_baseDefense;
-        private int m_baseSpecialDefense;
-        private int m_baseSpeed;
+        private Stats m_baseStats;
 
         #region Constructors
         public Species(string a_name, Type a_type1, Type a_type2, string a_description,
@@ -28,12 +23,12 @@ namespace PokemonClone
             m_type1 = a_type1;
             m_type2 = a_type2;
             m_description = a_description;
-            m_baseHP = a_baseHP;
-            m_baseAttack = a_baseAttack;
-            m_baseSpecialAttack = a_baseSpecialAttack;
-            m_baseDefense = a_baseDefense;
-            m_baseSpecialDefense = a_baseSpecialDefense;
-            m_baseSpeed = a_baseSpeed;
+            m_baseStats.hp = a_baseHP;
+            m_baseStats.attack = a_baseAttack;
+            m_baseStats.specialAttack = a_baseSpecialAttack;
+            m_baseStats.defense = a_baseDefense;
+            m_baseStats.specialDefense = a_baseSpecialDefense;
+            m_baseStats.speed = a_baseSpeed;
         }
 
         /// <summary>
@@ -49,12 +44,12 @@ namespace PokemonClone
             m_type1 = a_type1;
             m_type2 = a_type2;
             m_description = a_description;
-            m_baseHP = a_baseStats[0];
-            m_baseAttack = a_baseStats[1];
-            m_baseSpecialAttack = a_baseStats[2];
-            m_baseDefense = a_baseStats[3];
-            m_baseSpecialDefense = a_baseStats[4];
-            m_baseSpeed = a_baseStats[5];
+            m_baseStats.hp = a_baseStats[0];
+            m_baseStats.attack = a_baseStats[1];
+            m_baseStats.specialAttack = a_baseStats[2];
+            m_baseStats.defense = a_baseStats[3];
+            m_baseStats.specialDefense = a_baseStats[4];
+            m_baseStats.speed = a_baseStats[5];
         }
         #endregion
 
@@ -62,12 +57,13 @@ namespace PokemonClone
         public string Description { get { return m_description; } }
         public Type PrimaryType { get { return m_type1; } }
         public Type SecondaryType { get { return m_type2; } }
-        public int BaseHP { get { return m_baseHP; } }
-        public int BaseAttack { get { return m_baseAttack; } }
-        public int BaseSpecialAttack { get { return m_baseSpecialAttack; } }
-        public int BaseDefense { get { return m_baseDefense; } }
-        public int BaseSpecialDefense { get { return m_baseSpecialDefense; } }
-        public int BaseSpeed { get { return m_baseSpeed; } }
+        public Stats BaseStats { get { return m_baseStats; } }
+        public int BaseHP { get { return m_baseStats.hp; } }
+        public int BaseAttack { get { return m_baseStats.attack; } }
+        public int BaseSpecialAttack { get { return m_baseStats.specialAttack; } }
+        public int BaseDefense { get { return m_baseStats.defense; } }
+        public int BaseSpecialDefense { get { return m_baseStats.specialDefense; } }
+        public int BaseSpeed { get { return m_baseStats.speed; } }
 
         public override string ToString()
         {
