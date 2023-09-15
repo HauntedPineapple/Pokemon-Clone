@@ -37,7 +37,6 @@ namespace PokemonClone
             m_noEffectFrom = a_noEffectFrom;
         }
 
-
         #region Properties
         public TypeName Name { get { return m_name; } }
 
@@ -122,5 +121,31 @@ namespace PokemonClone
             double multiplierB = CalculateDamageMultiplier(a_attackingType, a_defendingDualType[1]);
             return CalculateDamageMultiplier(a_attackingType, a_defendingDualType[0]) * CalculateDamageMultiplier(a_attackingType, a_defendingDualType[1]);
         }
+
+        #region Operator Overloads
+        public override bool Equals(object? a_otherType)
+        {
+            if (a_otherType == null)
+                return false;
+            if (GetType() != a_otherType.GetType())
+                return false;
+
+            Type otherType = (Type)a_otherType;
+
+            return m_name == otherType.Name;
+        }
+
+        public static bool operator ==(Type a_firstType, Type a_secondType)
+        {
+            if (a_firstType.Equals(a_secondType)) return true;
+            else return false;
+        }
+
+        public static bool operator !=(Type a_firstType, Type a_secondType)
+        {
+            if (a_firstType.Equals(a_secondType)) return false;
+            else return true;
+        }
+        #endregion
     }
 }
