@@ -56,7 +56,7 @@ namespace PokemonClone
             output += "\nType: " + m_type + "   Categpry: ";
             if (m_isSpecial) output += "Special";
             else output += "Physical";
-            output += "\nAccuracy: " + m_type + "   Power: " + m_power;
+            output += "\nAccuracy: " + m_accuracy + "   Power: " + m_power;
             //if (m_description != "") output += m_description;
             return output;
         }
