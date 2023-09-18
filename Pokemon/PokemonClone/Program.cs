@@ -201,7 +201,9 @@
         static Species? species_bulbasaur;
         static void CreateSpecies()
         {
-
+            Species typhlosion=new Species(157, "Typhlosion", "Volcano Pokémon", TYPES[TypeName.Fire], TYPES[TypeName.Fire], "Typhlosion obscures itself behind a shimmering heat haze that it creates using its intensely hot flames. This Pokémon creates blazing explosive blasts that burn everything to cinders.", 79.5, 1.7, new int[] {78,84,78,109,85,100});
+            Species garchomp = new Species(445, "Garchomp", "Mach Pokémon", TYPES[TypeName.Dragon], TYPES[TypeName.Ground], "It can fly at speeds rivaling jet planes. It dives into flocks of bird Pokémon and gulps the entire flock down whole.", 95, 1.9, new int[] { 108,130,95,80,85,102});
+            
         }
         #endregion
     }
